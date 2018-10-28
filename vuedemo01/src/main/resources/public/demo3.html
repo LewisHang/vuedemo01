@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>v-on:keydown</title>
+		<script src="js/vuejs-2.5.16.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			VueJS：<input type="text" v-on:keydown="fun($event)">
+			<hr>
+			传统JS：<input type="text" onkeydown=showKeyCode()/>
+		</div>
+	</body>
+
+	<script>
+		//view model
+        new Vue({
+			el:"#app",
+			methods:{
+                fun:function(event){
+					var keyCode = event.keyCode;
+                    // alert(keyCode);
+					if(!(keyCode >= 48 && keyCode <= 57)){
+                        event.preventDefault();
+					}
+                }
+            }
+		});
+
+        function showKeyCode(){
+            var keyCode = event.keyCode;
+            //alert(keyCode)
+            if (keyCode >=65 && keyCode<=90){
+                //alert(keyCode)
+                // 阻止执行
+                event.preventDefault();
+            }
+        }
+
+
+	</script>
+</html>
